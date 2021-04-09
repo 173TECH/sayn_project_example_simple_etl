@@ -13,7 +13,11 @@ This project includes the usage of the following SAYN features:
 * Usage of parameters to make the code dynamic.
 * Usage of presets to define tasks.
 
-**Please note that you will need to rename the `settings_sample.yaml` file to `settings.yaml` after cloning the repository. Otherwise the SAYN project will not run properly. You should be in the root folder of the repository when running the project.**
+**To run the project, you will need to:**
+
+* rename the `settings_sample.yaml` file to `settings.yaml`.
+* install the project dependencies by running the `pip install -r requirements.txt` command from the root of the project folder.
+* Run all SAYN commands from the root of the project folder.
 
 ## SAYN Quick Overview
 
