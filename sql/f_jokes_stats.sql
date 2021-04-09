@@ -1,3 +1,6 @@
+-- this SQL query will be compiled using Jinja
+-- the user_prefix parameter is compiled based on the value in the profile used at execution time
+
 SELECT j.id AS joke_id
      , j.type AS joke_type
      , j.text

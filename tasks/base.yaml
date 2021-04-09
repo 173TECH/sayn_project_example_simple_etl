@@ -1,6 +1,9 @@
-# This tutorial is composed of one task group (base)
+# This project is composed of one task group (base)
 # Please see the task overview section of the documentation for more details:
 # https://173tech.github.io/sayn/tasks/overview/
+
+# Presets can be used to define multiple tasks which share similar attributes
+# This preset is used on the last task defined in this task group
 presets:
   models:
     type: autosql
@@ -11,8 +14,8 @@ presets:
     tags:
       - models
 
-# Task groups define at minimum a set of tasks
-# To run the tutorial, run the command 'sayn run' from the project folder's root
+# Task groups define at minimum one task
+# To run the project, run the command 'sayn run' from the project folder's root
 tasks:
   # python
   # here we define a Python task
@@ -21,6 +24,7 @@ tasks:
   extract_jokes_translated:
     type: python
     class: extract_jokes_translated.ExtractJokesTranslated
+    # those parameters will be accessible in the task
     parameters:
       n_jokes: 5
       translation_type: yoda
@@ -30,6 +34,7 @@ tasks:
   # autosql
   # autosql tasks enable to write a SELECT statement and SAYN creates the table / view automatically
   # the SQL queries for those models are stored into the sql folder
+  # this is the most verbose way of defining an autosql task. The next example uses a preset.
   f_jokes_stats:
      type: autosql
      file_name: f_jokes_stats.sql
@@ -46,3 +51,5 @@ tasks:
     preset: models
     parents:
       - f_jokes_stats
+    tags:
+      - models

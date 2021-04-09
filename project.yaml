@@ -8,5 +8,7 @@ required_credentials:
 # Credential used by sql and autosql tasks
 default_db: warehouse
 
+# List of parameters used throughout the project.
+# Those can be overwritten by individual users in settings.yaml profiles.
 parameters:
   user_prefix: ""
