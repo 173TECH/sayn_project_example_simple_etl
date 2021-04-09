@@ -1,5 +1,7 @@
 # SAYN Project Example: A Simple ETL
 
+## Project Description
+
 This is an example SAYN project. It shows you how to implement a simple ETL with SAYN.
 
 This project extracts jokes from an API, translates them into Yodish (the language of Yoda, this is) with another API and then run some SQL transformations on the extracted data. Both APIs are public and do not require an API key. However, they both have limited quotas (especially the Yodish translation API) so you should avoid re-running the extraction part of the project multiple times in a row.
@@ -13,8 +15,7 @@ Through this includes the usage of the following SAYN features:
 
 **Please note that you will need to rename the `settings_sample.yaml` file to `settings.yaml` after cloning the repository. Otherwise the SAYN project will not run properly. You should be in the root folder of the repository when running the project.**
 
-----
-Quick SAYN overview:
+## SAYN Quick Overview
 
 SAYN uses 2 key files to control the project:
   - settings.yaml: individual settings which are not shared
