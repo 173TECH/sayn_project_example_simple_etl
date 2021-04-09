@@ -2,11 +2,11 @@
 
 ## Project Description
 
-This is an example SAYN project. It shows you how to implement a simple ETL with SAYN.
+This is an example [SAYN](https://github.com/173TECH/sayn) project. It shows you how to implement a simple ETL with SAYN.
 
-This project extracts jokes from an API, translates them into Yodish (the language of Yoda, this is) with another API and then run some SQL transformations on the extracted data. Both APIs are public and do not require an API key. However, they both have limited quotas (especially the Yodish translation API) so you should avoid re-running the extraction part of the project multiple times in a row.
+This project extracts jokes from an API, translates them into Yodish (the language of Yoda, this is) with another API and then runs some SQL transformations on the extracted data. Both APIs are public and do not require an API key. However, they both have limited quotas (especially the Yodish translation API) so you should avoid re-running the extraction part of the project multiple times in a row.
 
-Through this includes the usage of the following SAYN features:
+This project includes the usage of the following SAYN features:
 
 * Python task to extract data with APIs.
 * Autosql tasks to automate SQL transformations.
@@ -34,4 +34,6 @@ SAYN uses some key commands for run:
   - sayn compile: compiles the code (similar flags apply)
   - sayn --help for full detail on commands
 
-For more details on SAYN, you can see the documentation here: https://173tech.github.io/sayn/
+For more details on SAYN, you can see:
+* the [documentation](https://173tech.github.io/sayn/)
+* the [tutorials](https://173tech.github.io/sayn/tutorials/tutorial_part1/)
