@@ -1,0 +1,48 @@
+# This tutorial is composed of one task group (base)
+# Please see the task overview section of the documentation for more details:
+# https://173tech.github.io/sayn/tasks/overview/
+presets:
+  models:
+    type: autosql
+    file_name: "{{task.name}}.sql"
+    materialisation: table
+    destination:
+      table: "{{user_prefix}}{{task.name}}"
+    tags:
+      - models
+
+# Task groups define at minimum a set of tasks
+# To run the tutorial, run the command 'sayn run' from the project folder's root
+tasks:
+  # python
+  # here we define a Python task
+  # python tasks are stored into the python folder
+  # this task loads some data into our SQLite database
+  extract_jokes_translated:
+    type: python
+    class: extract_jokes_translated.ExtractJokesTranslated
+    parameters:
+      n_jokes: 5
+      translation_type: yoda
+    tags:
+      - extract
+
+  # autosql
+  # autosql tasks enable to write a SELECT statement and SAYN creates the table / view automatically
+  # the SQL queries for those models are stored into the sql folder
+  f_jokes_stats:
+     type: autosql
+     file_name: f_jokes_stats.sql
+     materialisation: table
+     destination:
+       table: "{{user_prefix}}f_jokes_stats"
+     parents:
+       - extract_jokes_translated
+     tags:
+       - models
+
+  # using presets enables to inherit properties and reduce the task definition to a few lines
+  f_jokes_length_comparison:
+    preset: models
+    parents:
+      - f_jokes_stats
