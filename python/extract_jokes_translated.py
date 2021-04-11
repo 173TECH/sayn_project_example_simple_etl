@@ -12,7 +12,6 @@ class ExtractJokesTranslated(PythonTask):
         self.n_jokes = self.parameters["n_jokes"]
         self.translation_type = self.parameters["translation_type"]
         self.table_full_refresh = self.run_arguments["full_load"]
-        self.debug(self.table_full_refresh)
 
         self.url_joke = "https://official-joke-api.appspot.com/random_joke"
         self.url_translation = f"https://api.funtranslations.com/translate/{self.translation_type}.json"
