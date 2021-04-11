@@ -51,5 +51,3 @@ tasks:
     preset: models
     parents:
       - f_jokes_stats
-    tags:
-      - models

@@ -11,6 +11,8 @@ class ExtractJokesTranslated(PythonTask):
         self.dst_table = self.parameters["user_prefix"] + "logs_jokes_translated"
         self.n_jokes = self.parameters["n_jokes"]
         self.translation_type = self.parameters["translation_type"]
+        self.table_full_refresh = self.run_arguments["full_load"]
+        self.debug(self.table_full_refresh)
 
         self.url_joke = "https://official-joke-api.appspot.com/random_joke"
         self.url_translation = f"https://api.funtranslations.com/translate/{self.translation_type}.json"
@@ -62,6 +64,6 @@ class ExtractJokesTranslated(PythonTask):
         # load data to database
         self.debug(f"Loading {len(jokes)} jokes translated to DB.")
         db = self.default_db
-        db.load_data(self.dst_table, jokes, replace=True)
+        db.load_data(self.dst_table, jokes, replace=self.table_full_refresh)
 
         return self.success()
