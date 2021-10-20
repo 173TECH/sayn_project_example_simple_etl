@@ -1,10 +1,8 @@
-# list of free apis
-# https://apipheny.io/free-api/
 import requests
 import json
-import time
 
 from sayn import PythonTask
+
 
 class ExtractJokesTranslated(PythonTask):
     def setup(self):
@@ -13,7 +11,7 @@ class ExtractJokesTranslated(PythonTask):
         self.translation_type = self.parameters["translation_type"]
         self.table_full_refresh = self.run_arguments["full_load"]
 
-        self.url_joke = "https://official-joke-api.appspot.com/random_joke"
+        self.url_joke = "https://v2.jokeapi.dev/joke/Programming"
         self.url_translation = f"https://api.funtranslations.com/translate/{self.translation_type}.json"
 
         return self.success()
@@ -24,19 +22,22 @@ class ExtractJokesTranslated(PythonTask):
         # get jokes
         self.debug(f"Extracting {str(self.n_jokes)} jokes.")
         for i in range(self.n_jokes):
-            r = requests.get(self.url_joke)
+            r = requests.get(self.url_joke, params={
+                "type": "twopart",
+                "blacklistFlags": "nsfw,religious,political,racist,sexist,explicit"
+            })
 
             if r.status_code != 200:
                 self.debug("Request not successful!")
                 continue
 
             content = json.loads(r.content.decode("utf-8"))
-            # self.debug(content)
+            # self.debug(content)
 
             joke = {
                 "id": content["id"],
                 "type": content["type"],
-                "text": content["setup"] + " | " + content["punchline"]
+                "text": content["setup"] + " | " + content["delivery"]
             }
 
             jokes.append(joke)
